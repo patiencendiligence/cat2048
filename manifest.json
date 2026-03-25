@@ -8,8 +8,8 @@
     "default_popup": "index.html"
   },
   "icons": {
-    "16": "assets/reference-cat.png",
-    "48": "assets/reference-cat.png",
-    "128": "assets/reference-cat.png"
+    "16": "assets/cats/cat_2.png",
+    "48": "assets/cats/cat_2.png",
+    "128": "assets/cats/cat_2.png"
   }
 }
