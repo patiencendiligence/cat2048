@@ -1,0 +1,10 @@
+# Static site — root = web root (index.html, css/, js/, assets/)
+[build]
+  publish = "."
+
+# Optional: pretty URLs for /privacy.html (default works as-is)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
