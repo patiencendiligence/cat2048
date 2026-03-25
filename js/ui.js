@@ -190,9 +190,13 @@
   }
 
   let touchStart = null;
+  /** 보드에서 시작한 제스처 동안 문서 스크롤/오버스크롤 차단 */
+  let boardGestureActive = false;
+
   boardEl.addEventListener(
     'touchstart',
     (e) => {
+      boardGestureActive = true;
       const t = e.changedTouches[0];
       touchStart = { x: t.clientX, y: t.clientY };
     },
@@ -201,6 +205,7 @@
   boardEl.addEventListener(
     'touchend',
     (e) => {
+      boardGestureActive = false;
       if (!touchStart) return;
       const t = e.changedTouches[0];
       const dx = t.clientX - touchStart.x;
@@ -219,17 +224,21 @@
     },
     { passive: true }
   );
+  boardEl.addEventListener(
+    'touchcancel',
+    () => {
+      boardGestureActive = false;
+    },
+    { passive: true }
+  );
 
-  /** 모바일: 보드 위 스와이프가 페이지 스크롤·당겨서 새로고침·가장자리 뒤로가기로 이어지지 않도록 */
+  /** 모바일: 보드 스와이프가 페이지 스크롤·당겨서 새로고침·가로 오버스크롤로 이어지지 않도록 */
   function bindMobileTouchGuards() {
     document.addEventListener(
       'touchmove',
       (e) => {
-        const el = e.target;
-        if (!el || !el.closest) return;
-        if (el.closest('#board')) {
-          e.preventDefault();
-        }
+        if (!boardGestureActive) return;
+        e.preventDefault();
       },
       { passive: false }
     );
