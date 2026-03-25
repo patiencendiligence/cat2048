@@ -4,9 +4,11 @@
   "private": true,
   "description": "2048 with pixel-art cat tiles",
   "scripts": {
-    "build-sprites": "node scripts/generate-sprites.cjs"
+    "build-sprites": "node scripts/generate-from-cat2.mjs",
+    "build-sprites:legacy": "node scripts/generate-sprites.cjs"
   },
   "devDependencies": {
-    "pngjs": "^7.0.0"
+    "pngjs": "^7.0.0",
+    "sharp": "^0.34.5"
   }
 }
