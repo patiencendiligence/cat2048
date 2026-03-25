@@ -70,13 +70,15 @@
     const tile = document.createElement('div');
     tile.className = 'tile';
     tile.dataset.value = String(cell.value);
-    if (cell.value === 2048) tile.classList.add('tile--rainbow');
+    if (cell.value === 2048 && displayMode === 'cat') tile.classList.add('tile--rainbow');
     if (cell.merged) tile.classList.add('tile--pop');
     tile.style.setProperty('--tile-bg', tileBackground(cell.value));
 
     const url = tileUrl(cell.value);
-    if (url) {
+    if (displayMode === 'cat' && url) {
       tile.style.backgroundImage = `url('${url}')`;
+    } else {
+      tile.style.backgroundImage = 'none';
     }
 
     const inner = document.createElement('div');
