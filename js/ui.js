@@ -220,6 +220,24 @@
     { passive: true }
   );
 
+  /** 모바일: 보드 위 스와이프가 페이지 스크롤·당겨서 새로고침·가장자리 뒤로가기로 이어지지 않도록 */
+  function bindMobileTouchGuards() {
+    document.addEventListener(
+      'touchmove',
+      (e) => {
+        const el = e.target;
+        if (!el || !el.closest) return;
+        if (el.closest('#board')) {
+          e.preventDefault();
+        }
+      },
+      { passive: false }
+    );
+
+    document.addEventListener('gesturestart', (e) => e.preventDefault(), { passive: false });
+  }
+  bindMobileTouchGuards();
+
   btnNew.addEventListener('click', () => {
     game = new window.Game2048();
     game.wonDismissed = false;

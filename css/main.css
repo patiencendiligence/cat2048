@@ -19,15 +19,29 @@
 }
 
 html {
+  height: 100%;
+  overflow: hidden;
   touch-action: manipulation;
+  /* 당겨서 새로고침, 가로/세로 오버스크롤 바운스·히스토리 스와이프 완화 */
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
 }
 
 body {
   margin: 0;
-  min-height: 100dvh;
+  min-height: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: linear-gradient(165deg, #efe8e0 0%, #ddd4c8 45%, #d0c8bc 100%);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+  /* iOS 바운스 완화 */
+  -webkit-overflow-scrolling: touch;
 }
 
 .app {
@@ -201,6 +215,10 @@ body:not(.mode-number) .mode-num {
   box-shadow:
     inset 0 2px 8px rgba(0, 0, 0, 0.12),
     0 8px 24px rgba(60, 50, 40, 0.15);
+  /* 브라우저가 보드 제스처를 스크롤/뒤로가기로 해석하지 않도록 */
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .grid-cell {
@@ -405,6 +423,9 @@ body:not(.mode-number) .tile-number--ghost {
   overflow: auto;
   padding: 16px 18px 20px;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+  touch-action: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .collection-head {
