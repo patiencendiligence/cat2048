@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "cat2048",
+  "version": "1.0.0",
+  "description": "2048 with collectible pixel-art cats — merge, score, unlock the prism cat.",
+  "action": {
+    "default_title": "cat2048",
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "assets/reference-cat.png",
+    "48": "assets/reference-cat.png",
+    "128": "assets/reference-cat.png"
+  }
+}

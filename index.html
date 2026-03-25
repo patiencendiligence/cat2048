@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#e8e0d8" />
+    <meta name="description" content="cat2048 — 픽셀 고양이 2048" />
+    <title>cat2048</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="brand">
+          <h1>cat2048</h1>
+          <p class="tagline">고양이를 합쳐서 진화 · 도감을 채워보세요</p>
+        </div>
+        <div class="scores">
+          <div class="score-box">
+            <span class="score-label">Score</span>
+            <span id="score" class="score-value">0</span>
+          </div>
+          <div class="score-box">
+            <span class="score-label">Best</span>
+            <span id="best" class="score-value">0</span>
+          </div>
+        </div>
+      </header>
+
+      <p class="best-cat-row">🏆 최고 레벨 고양이: <strong id="best-cat">—</strong></p>
+
+      <div class="toolbar">
+        <button type="button" class="btn" id="btn-new">New game</button>
+        <label class="mode-switch">
+          <input type="checkbox" id="mode-toggle" aria-label="숫자 모드" />
+          <span class="mode-switch__ui"></span>
+          <span class="mode-switch__text"><span class="mode-cat">고양이</span> / <span class="mode-num">숫자</span></span>
+        </label>
+        <button type="button" class="btn btn-secondary" id="btn-collection">도감</button>
+      </div>
+
+      <main class="playfield">
+        <div id="board" class="board" role="grid" aria-label="게임 보드 4x4"></div>
+      </main>
+
+      <p class="hint">방향키 또는 WASD · 모바일은 스와이프</p>
+
+      <div id="overlay" class="overlay" hidden>
+        <div class="overlay-card">
+          <h2 id="overlay-title">Game over</h2>
+          <p id="overlay-msg"></p>
+          <div class="overlay-actions">
+            <button type="button" class="btn" id="btn-try-again">다시 하기</button>
+            <button type="button" class="btn btn-secondary" id="btn-continue" hidden>계속하기</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="collection" class="collection-overlay" hidden>
+        <div class="collection-panel">
+          <div class="collection-head">
+            <h2>도감</h2>
+            <button type="button" class="btn btn-icon" id="btn-close-collection" aria-label="닫기">×</button>
+          </div>
+          <p class="collection-desc">게임 중 해당 숫자 타일이 나오면(합치거나 새로 나와도) 잠금이 풀려요.</p>
+          <div id="collection-grid" class="collection-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/constants.js"></script>
+    <script src="js/cats.js"></script>
+    <script src="js/sounds.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/ui.js"></script>
+  </body>
+</html>
